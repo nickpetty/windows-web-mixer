@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <script type="text/javascript" src="../static/api.js"></script>	 -->
+	<script type="text/javascript" src="../static/controlsv2.js"></script>
+	
+</head>
+
+<body>
+	<div id="header">
+		<center><div id="title"><font color="#ffffff">Founders AV Control</font></div></center>
+		<div id="hidden"></div>
+	</div>
+	<div class="container">
+	<div id="chrome"></div>
+	<script type="text/javascript" src="../static/index.js?v=21"></script>	
+		<ul>
+{% for process in processes['processes'] %}
+<script>
+    var {{ process.name }} = new VolumeControl('{{ process.name }}','{{ process.name }}', changeVolume, muteVolume);
+	{{ process.name }}.place(100,116);	
+	{{ process.name }}.set({{process.volume}},{{process.mute}});
+</script>
+{% endfor %}
+</ul>
+
+	</div>
+
+		
+
+</body>
+</html>
