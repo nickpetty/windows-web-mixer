@@ -12,15 +12,20 @@
 		<center><div id="title"><font color="#ffffff">Founders AV Control</font></div></center>
 		<div id="hidden"></div>
 	</div>
+	{% for process in processes['processes'] %}
+		<div id="{{process.name}}"></div>
+	{% endfor %}
 	<div class="container">
 	<div id="chrome"></div>
 	<script type="text/javascript" src="../static/index.js?v=21"></script>	
 		<ul>
+{% set i = 116 %}
 {% for process in processes['processes'] %}
 <script>
     var {{ process.name }} = new VolumeControl('{{ process.name }}','{{ process.name }}', changeVolume, muteVolume);
-	{{ process.name }}.place(100,116);	
+	{{ process.name }}.place(100,{{ i }});	
 	{{ process.name }}.set({{process.volume}},{{process.mute}});
+	{% set i = i + 100 %}
 </script>
 {% endfor %}
 </ul>
